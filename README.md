@@ -1,1 +1,1 @@
-# Telegram-Neural-Style-Transfer
+# Telegram Neural Style Transfer Bot
