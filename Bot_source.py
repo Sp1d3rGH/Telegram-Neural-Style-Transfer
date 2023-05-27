@@ -1,4 +1,4 @@
-import nst_test
+import neural_network_source
 import telebot
 import os
 
@@ -87,7 +87,7 @@ def handle_docs_photo(message):
                         dict1[message.chat.id].append(src3)
                         break
 
-            nst_test.startP(dict1[message.chat.id][0], dict1[message.chat.id][1], 100, dict1[message.chat.id][2])
+            neural_network_source.start_nst(dict1[message.chat.id][0], dict1[message.chat.id][1], 1, dict1[message.chat.id][2])
             bot.send_photo(message.chat.id, open(dict1[message.chat.id][2], 'rb'))
             os.remove(dict1[message.chat.id][2])
             os.remove(dict1[message.chat.id][0])
