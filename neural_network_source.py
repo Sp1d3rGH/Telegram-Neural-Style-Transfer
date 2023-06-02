@@ -140,17 +140,8 @@ def run_style_transfer(content_path, style_path, num_iterations, content_weight=
     return best_img
 
 
-def fuse_images(content, style, iterations):
-    content_path = content
-    style_path = style
-
-    best_img = run_style_transfer(content_path, style_path, num_iterations=iterations)
-
-    return Image.fromarray(best_img)
-
-
 def start_nst(input_path, input_style_path, iterations, path_to_file):
-    final_image = fuse_images(input_path, input_style_path, iterations)
+    final_image = Image.fromarray(run_style_transfer(input_path, input_style_path, num_iterations=iterations))
     final_image.save(path_to_file)
 
 
