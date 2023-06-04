@@ -8,7 +8,7 @@ Telegram Neural Style Transfer Bot
 
 # КАК ПОЛЬЗОВАТЬСЯ БОТОМ
 
-1) Добавляем бота по ссылке (t.me/PhotoConverterAK_bot)
+1) Добавляем бота по ссылке (https://t.me/PhotoConverterAK_bot)
 2) Вводим первую команду /start
 3) Следуем интрукция, отправляемым ботом вам в чат
 
