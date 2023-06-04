@@ -22,4 +22,5 @@
 2) Необходимо также установить необходимые пакеты через windows cmd из списка (pip install -U matplotlib, pip install tensorflow, pip install pytelegrambotapi, pip install ipython)
 3) Скачиваем файлы из репозитория по ссылке (https://github.com/Sp1d3rGH/Telegram-Neural-Style-Transfer)
 4) Запускаем файл с исходным кодом бота (Bot_source.py), убедившись, что в той же директории присутствует файл с нейронной сетью (neural_network_source.py)
+
 • Важно: бот работает пока вы вручную не завершите работу файла с кодом.
