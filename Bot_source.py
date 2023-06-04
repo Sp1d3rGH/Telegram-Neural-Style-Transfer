@@ -2,6 +2,7 @@ import neural_network_source
 import telebot
 import os
 from telebot import  types
+from time import sleep
 bot = telebot.TeleBot("6135446640:AAHUU00ijGRJsTlO6KfB_GjlAJO6TavGDcg")
 
 @bot.message_handler(commands=['start'])
@@ -9,10 +10,14 @@ def start_message(message):
     chatId = message.chat.id
     text = message.text.lower
 
-    bot.send_message(chatId, "Hello, I am a bot that gives your photo the style of a famous painting."
-                             " To get the result, please send separate messages first to the photo you want to change,"
-                             " and then to the picture in the style of which you need to get the photo.")
 
+
+    markup2 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    item_prom = types.KeyboardButton("/begin")
+    markup2.add(item_prom)
+    bot.send_message(chatId, text="Hello, I am a bot that gives your photo the style of a famous painting."
+                             " To get the result, please send separate messages first to the photo you want to change,"
+                             " and then to the picture in the style of which you need to get the photo.", reply_markup=markup2)
 
 dict1 = {}
 
@@ -48,6 +53,9 @@ def bot_message(message):
 @bot.message_handler(content_types=['photo'])
 def handle_docs_photo(message):
     try:
+
+
+
         if message.chat.id in dict1 and dict1[message.chat.id][0] == 1:
             file_info = bot.get_file(message.photo[-1].file_id)
             downloaded_file = bot.download_file(file_info.file_path)
@@ -124,6 +132,7 @@ def handle_docs_photo(message):
                 bot.send_message(message.chat.id, 'загадайте число', reply_markup=markup)
 
         else:
+            bot.delete_message(message.chat.id, message.id)
             bot.send_message(message.chat.id, 'не пиши')
     except Exception as e:
         bot.reply_to(message, e)
@@ -133,29 +142,34 @@ def handle_docs_photo(message):
 def callback(call):
     if call.message:
         if call.data == "continue":
-            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id, text='Great! Now send the second picture.')
+            bot.delete_message(call.message.chat.id, call.message.id)
+            bot.send_message(call.message.chat.id,'Great! Now send the second picture1.')
             dict1[call.message.chat.id][0] = 1
             return
         if call.data == '100':
-            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id, text='тест')
+            bot.delete_message(call.message.chat.id, call.message.id)
+            bot.send_message(call.message.chat.id, 'тест')
             neural_network_source.start_nst(dict1[call.message.chat.id][1], dict1[call.message.chat.id][2], 1,
                                             dict1[call.message.chat.id][3])
 
             bot.send_photo(call.message.chat.id, open(dict1[call.message.chat.id][3], 'rb'))
         if call.data == '500':
-            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id, text='тест')
+            bot.delete_message(call.message.chat.id, call.message.id)
+            bot.send_message(call.message.chat.id,'тест')
             neural_network_source.start_nst(dict1[call.message.chat.id][1], dict1[call.message.chat.id][2], 10,
                                             dict1[call.message.chat.id][3])
 
             bot.send_photo(call.message.chat.id, open(dict1[call.message.chat.id][3], 'rb'))
         if call.data == '1000':
-            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id, text='тест')
+            bot.delete_message(call.message.chat.id, call.message.id)
+            bot.send_message(call.message.chat.id, 'тест')
             neural_network_source.start_nst(dict1[call.message.chat.id][1], dict1[call.message.chat.id][2], 15,
                                             dict1[call.message.chat.id][3])
 
             bot.send_photo(call.message.chat.id, open(dict1[call.message.chat.id][3], 'rb'))
         if call.data == 'stop':
-            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id, text='stopped')
+            bot.delete_message(call.message.chat.id, call.message.id)
+            bot.send_message(call.message.chat.id,'stopped')
 
             if len(dict1[call.message.chat.id]) == 2:
                 os.remove(dict1[call.message.chat.id][1])
