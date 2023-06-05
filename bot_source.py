@@ -33,7 +33,7 @@ def start_begin(message):
         bot.delete_message(message.chat.id, message.id)
         message_prom = bot.send_message(message.chat.id, "You are still working on creating another picture.\n"
                                                          "Please, follow the steps according to queries.")
-        sleep(5)
+        sleep(10)
         bot.delete_message(message.chat.id, message_prom.id)
 
 
@@ -42,24 +42,24 @@ def start_info(message):
     bot.delete_message(message.chat.id, message.id)
     if message.chat.id not in dict1:
         message_prom = bot.send_message(message.chat.id, "Use the '/begin' to get started.")
-        sleep(5)
+        sleep(10)
         bot.delete_message(message.chat.id, message_prom.id)
     elif len(dict1[message.chat.id]) == 1:
         message_prom = bot.send_message(message.chat.id, "As suggested, upload the picture you want to change.\n"
                                                          "Make sure your photos are in .png or .jpeg (.jpg) formats"
                                                          " and select 'Compress images' option in Telegram.")
-        sleep(5)
+        sleep(10)
         bot.delete_message(message.chat.id, message_prom.id)
     elif len(dict1[message.chat.id]) == 2 and dict1[message.chat.id][0] == 0:
         message_prom = bot.send_message(message.chat.id, "'Continue' - confirm an image and proceed further\n"
                                                          "'Stop' - return to pre-begin stage.")
-        sleep(5)
+        sleep(10)
         bot.delete_message(message.chat.id, message_prom.id)
     elif len(dict1[message.chat.id]) == 2 and dict1[message.chat.id][0] == 1:
         message_prom = bot.send_message(message.chat.id, "As suggested, upload the image with desirable art style.\n"
                                                          "Make sure your photos are in .png or .jpeg (.jpg) formats"
                                                          " and select 'Compress images' option in Telegram.")
-        sleep(5)
+        sleep(10)
         bot.delete_message(message.chat.id, message_prom.id)
     elif len(dict1[message.chat.id]) == 4 and dict1[message.chat.id][0] == 0:
         message_prom = bot.send_message(message.chat.id, "Choose the number of iterations or stop the process.\n"
@@ -67,11 +67,11 @@ def start_info(message):
                                                          "500 Iterations - strong affinity.\n"
                                                          "1000 Iterations - strongest affinity.\n"
                                                          "'Stop' - return to pre-begin stage.")
-        sleep(5)
+        sleep(10)
         bot.delete_message(message.chat.id, message_prom.id)
     elif len(dict1[message.chat.id]) == 5:
         message_prom = bot.send_message(message.chat.id, 'Please, wait until I finish processing the result for you.')
-        sleep(5)
+        sleep(10)
         bot.delete_message(message.chat.id, message_prom.id)
 
 @bot.message_handler(content_types=['text'])
@@ -159,13 +159,13 @@ def handle_docs_photo(message):
             bot.delete_message(message.chat.id, message.id)
             message_prom = bot.send_message(message.chat.id, "You haven't initialized the process yet."
                                                              " Start with '/begin' command.")
-            sleep(5)
+            sleep(10)
             bot.delete_message(message.chat.id, message_prom.id)
         else:
             bot.delete_message(message.chat.id, message.id)
             message_prom = bot.send_message(message.chat.id, "You are still working on creating another image.\n"
                                                              "Please, follow the steps according to queries.")
-            sleep(5)
+            sleep(10)
             bot.delete_message(message.chat.id, message_prom.id)
     except Exception as e:
         bot.reply_to(message, e)
