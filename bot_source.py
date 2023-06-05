@@ -186,7 +186,7 @@ def callback(call):
             neural_network_source.start_nst(dict1[call.message.chat.id][1], dict1[call.message.chat.id][2], 100,
                                             dict1[call.message.chat.id][3])
             bot.send_message(call.message.chat.id, "There is a final result!\nIf you feel so, you can start anew"
-                                                   "with '/begin'.")
+                                                   " with '/begin'.")
             bot.send_photo(call.message.chat.id, open(dict1[call.message.chat.id][3], 'rb'))
         if call.data == '500':
             dict1[call.message.chat.id].append(1)
@@ -195,7 +195,7 @@ def callback(call):
             neural_network_source.start_nst(dict1[call.message.chat.id][1], dict1[call.message.chat.id][2], 500,
                                             dict1[call.message.chat.id][3])
             bot.send_message(call.message.chat.id, "There is a final result!\nIf you feel so, you can start anew"
-                                                   "with '/begin'.")
+                                                   " with '/begin'.")
             bot.send_photo(call.message.chat.id, open(dict1[call.message.chat.id][3], 'rb'))
         if call.data == '1000':
             dict1[call.message.chat.id].append(1)
@@ -204,7 +204,7 @@ def callback(call):
             neural_network_source.start_nst(dict1[call.message.chat.id][1], dict1[call.message.chat.id][2], 1000,
                                             dict1[call.message.chat.id][3])
             bot.send_message(call.message.chat.id, "There is a final result!\nIf you feel so, you can start anew"
-                                                   "with '/begin'.")
+                                                   " with '/begin'.")
             bot.send_photo(call.message.chat.id, open(dict1[call.message.chat.id][3], 'rb'))
         if call.data == 'stop':
             bot.delete_message(call.message.chat.id, call.message.id)
