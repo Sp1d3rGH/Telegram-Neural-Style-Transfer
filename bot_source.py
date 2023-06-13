@@ -3,7 +3,7 @@ import telebot
 import os
 from telebot import  types
 from time import sleep
-bot = telebot.TeleBot("6135446640:AAHUU00ijGRJsTlO6KfB_GjlAJO6TavGDcg")
+bot = telebot.TeleBot("")
 
 dict1 = {}
 
